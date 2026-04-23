@@ -1,32 +1,35 @@
 # GigLedger
 
-> Taxes for the 1099 life.
+Taxes for the 1099 life. Track income, expenses, and estimated taxes for rideshare, freelance, and every side hustle in between.
 
-Track income, expenses, and estimated taxes for rideshare, freelance, and every side hustle in between.
+## Stack
 
-## What it does
+- **Next.js 15** (App Router)
+- **TypeScript** (strict)
+- **Tailwind v4** (CSS-first, no config file)
+- **pnpm**
 
-- **Auto-categorized** — Connects to your bank and labels every expense in the correct IRS bucket.
-- **Quarterly reminders** — Know what you owe the IRS before they come knocking at your door.
-- **Filed in one click** — Export to TurboTax or let us file for you. No spreadsheets required.
+## Routes
 
-## Why
+| Route | Description |
+|---|---|
+| `/` | Landing page — hero, demo, features, waitlist form |
+| `/try` | Tax estimator — enter income + expense, see quarterly estimate + YTD table |
+| `/api/waitlist` | `POST { email }` — proxies to waitlist API with `product: "gigledger"` |
 
-Personal finance. Part of a 20-product exploration of high-demand consumer and SMB markets.
+## Local development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Deploy
+
+Hosted on [Vercel](https://vercel.com). Push to `main` to auto-deploy. No environment variables required.
 
 ## Status
 
-Landing page live. Product in planning.
-
-- **Live**: https://mukundakatta.github.io/gigledger/
-
-## Stack (when built)
-
-- Next.js 16 (App Router)
-- Supabase for auth + data
-- Stripe for payments
-- Deployed on Vercel
-
-## Local preview
-
-Just open `index.html` in a browser — it is a static landing page with the Tailwind CDN.
+v0 skeleton — landing page ported from `index.html`, tax estimator at `/try`, and waitlist API wired up. Full product (bank connect, auto-categorization, filing) coming post-launch.
