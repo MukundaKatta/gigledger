@@ -7,10 +7,16 @@
 <meta name="description" content="Track income, expenses, and estimated taxes for rideshare, freelance, and every side hustle in between.">
 <meta property="og:title" content="GigLedger — Taxes for the 1099 life.">
 <meta property="og:description" content="Track income, expenses, and estimated taxes for rideshare, freelance, and every side hustle in between.">
+<meta property="og:image" content="https://waitlist-api-sigma.vercel.app/api/og?title=GigLedger&accent=green&category=Personal%20finance">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waitlist-api-sigma.vercel.app/api/og?title=GigLedger&accent=green&category=Personal%20finance">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script defer data-domain="gigledger.vercel.app" src="https://plausible.io/js/script.js"></script>
 <style>
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
   * { -webkit-font-smoothing: antialiased; }
@@ -184,6 +190,7 @@
       if (!email) return;
       form.style.display = 'none';
       thanks.classList.remove('hidden');
+      if (typeof plausible !== 'undefined') plausible('waitlist_signup', { props: { product: PRODUCT } });
       try {
         await fetch(WAITLIST_API, {
           method: 'POST',
